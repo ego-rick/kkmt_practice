@@ -16,7 +16,6 @@ class QMenuButton(QtWidgets.QWidget):
 
         self.text = ""
         self.value = 0
-
         self.width = 50
         self.height = 53
         self.setFixedSize(self.width, self.height)
@@ -26,7 +25,7 @@ class QMenuButton(QtWidgets.QWidget):
         self.width = fm.width(self.text)
 
         if self.value != 0:
-            self.width = self.width + fm.width(str(self.value)) + 15
+            self.width = self.width + fm.width(str(self.value)) + 15 + 1
 
         self.setFixedSize(self.width, self.height)
 
@@ -88,20 +87,21 @@ class QMenuButton(QtWidgets.QWidget):
             brushMain = QBrush(colorBubble)
             painter.setBrush(brushMain)
             painter.setPen(colorBubble)
-            painter.drawRoundedRect(fm.width(self.text) + 5, self.height // 2 - 5, fm.width(str(self.value)) + 10, 16, 8.0, 8.0)
+            painter.drawRoundedRect(fm.width(self.text) + 5, self.height // 2 - 5, fm.width(str(self.value)) + 10, 16,
+                                    8.0, 8.0)
 
             painter.setPen(colorText)
-            painter.drawText(QRect(fm.width(self.text) + 10, self.height // 2 - 4, fm.width(str(self.value)), 20), Qt.TextWordWrap, str(self.value))
+            painter.drawText(QRect(fm.width(self.text) + 10, self.height // 2 - 4, fm.width(str(self.value)), 20),
+                             Qt.TextWordWrap, str(self.value))
 
         if self.toggle:
             brushMain = QBrush(color)
             painter.setBrush(brushMain)
             painter.setPen(color)
-            painter.drawRoundedRect(0, self.height - 3, self.width, 3, 5.0, 5.0)
+            painter.drawRoundedRect(0, self.height - 2, self.width, 2, 5.0, 5.0)
             painter.drawRect(0, self.height - 1, self.width, 1)
 
         painter.end()
-
 
 
 class QNotification(QtWidgets.QWidget):
@@ -110,7 +110,7 @@ class QNotification(QtWidgets.QWidget):
 
         self.size = 300
         self.height = 165
-        #self.verticalLayout = QtWidgets.QVBoxLayout(self)
+        # self.verticalLayout = QtWidgets.QVBoxLayout(self)
 
         self.name = None
         self.surname = None
@@ -175,7 +175,7 @@ class QNotification(QtWidgets.QWidget):
             offset=QtCore.QPointF(0, 0)
         )
         self.setGraphicsEffect(shadow)
-    
+
     def enterEvent(self, event):
         self.__setShadow(QtGui.QColor(0, 104, 255, 200))
 
@@ -295,26 +295,23 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         QMainWindow.__init__(self)
         self.setupUi(self)
 
-        #self.layoutF = FlowLayout(self.scrollAreaWidgetContents, hspacing=20, vspacing=20,margin=2)
+       # self.layoutF = FlowLayout(self.scrollAreaWidgetContents, hspacing=20, vspacing=20, margin=2)
 
         """for i in range(1, 50):
             wdgt = QNotification(self.scrollAreaWidgetContents)
             wdgt.setData()
             self.layoutF.addWidget(wdgt)"""
 
-        name = ["ФИНАНСЫ", "РУКОВОДИТЕЛИ"]
+        name = ["CТУДЕНТЫ", "РУКОВОДИТЕЛИ", "ПРАКТИКИ"]
         for i in name:
             wdgt = QMenuButton(self.frameBarTop)
             wdgt.setText(i)
             wdgt.setValue(random.randint(0, 1000))
             self.horizontalLayout_3.addWidget(wdgt)
 
-        #self.setGeometry(300, 300, 355, 280)
-        #self.wdgt = QNotification(parent=self, size=300)
+        # self.setGeometry(300, 300, 355, 280)
+        # self.wdgt = QNotification(parent=self, size=300)
         self.show()
-
-
-
 
 
 if __name__ == '__main__':
