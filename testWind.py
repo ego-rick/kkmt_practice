@@ -14,7 +14,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(850, 600)
+        MainWindow.resize(780, 541)
+        MainWindow.setMinimumSize(QtCore.QSize(780, 0))
         MainWindow.setStyleSheet("QWidget {\n"
 "    color: rgb(26, 34, 47);\n"
 "    font: 10pt \"Arial\";\n"
@@ -36,6 +37,22 @@ class Ui_MainWindow(object):
 "\n"
 "#pushButtonTop_1, #pushButtonTop_2, #pushButtonTop_3 {\n"
 "    padding: 0 0px;\n"
+"}\n"
+"#frameMain { \n"
+"    background-color: rgb(237, 238, 240);\n"
+"}\n"
+"#framePage1_first { \n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-top-left-radius: 10px;\n"
+"    border-top-right-radius: 10px;\n"
+"}\n"
+"#framePage1_second {\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-bottom-left-radius: 10px;\n"
+"    border-bottom-right-radius: 10px;\n"
+"}\n"
+"#scrollArea {\n"
+"    border: None;\n"
 "}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -116,7 +133,13 @@ class Ui_MainWindow(object):
         self.pushButton.setSizePolicy(sizePolicy)
         self.pushButton.setMinimumSize(QtCore.QSize(32, 32))
         self.pushButton.setMaximumSize(QtCore.QSize(32, 32))
-        self.pushButton.setText("")
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.pushButton.setFont(font)
         self.pushButton.setObjectName("pushButton")
         self.horizontalLayout_2.addWidget(self.pushButton)
         self.label_2 = QtWidgets.QLabel(self.frameBarTop)
@@ -127,33 +150,66 @@ class Ui_MainWindow(object):
         self.label_2.setSizePolicy(sizePolicy)
         self.label_2.setMinimumSize(QtCore.QSize(32, 32))
         self.label_2.setMaximumSize(QtCore.QSize(32, 32))
+        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName("label_2")
         self.horizontalLayout_2.addWidget(self.label_2)
         self.verticalLayout.addWidget(self.frameBarTop)
-        self.frameMain = QtWidgets.QFrame(self.centralwidget)
-        self.frameMain.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frameMain.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frameMain.setObjectName("frameMain")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.frameMain)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.stackedWidget_2 = QtWidgets.QStackedWidget(self.frameMain)
-        self.stackedWidget_2.setObjectName("stackedWidget_2")
-        self.page_5 = QtWidgets.QWidget()
-        self.page_5.setObjectName("page_5")
-        self.stackedWidget_2.addWidget(self.page_5)
-        self.page_6 = QtWidgets.QWidget()
-        self.page_6.setObjectName("page_6")
-        self.stackedWidget_2.addWidget(self.page_6)
-        self.verticalLayout_3.addWidget(self.stackedWidget_2)
-        self.verticalLayout.addWidget(self.frameMain)
+        self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
+        self.stackedWidget.setObjectName("stackedWidget")
+        self.page_1 = QtWidgets.QWidget()
+        self.page_1.setObjectName("page_1")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.page_1)
+        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_4.setSpacing(0)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.scrollArea = QtWidgets.QScrollArea(self.page_1)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 720, 484))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout_5.setContentsMargins(20, 20, 20, 20)
+        self.verticalLayout_5.setSpacing(0)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.framePage1_first = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        self.framePage1_first.setObjectName("framePage1_first")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.framePage1_first)
+        self.horizontalLayout_4.setContentsMargins(20, 20, 20, 0)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.pushButton_6 = QtWidgets.QPushButton(self.framePage1_first)
+        self.pushButton_6.setMinimumSize(QtCore.QSize(32, 32))
+        self.pushButton_6.setMaximumSize(QtCore.QSize(32, 32))
+        self.pushButton_6.setText("")
+        self.pushButton_6.setObjectName("pushButton_6")
+        self.horizontalLayout_4.addWidget(self.pushButton_6)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem4)
+        self.verticalLayout_5.addWidget(self.framePage1_first)
+        self.framePage1_second = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.framePage1_second.sizePolicy().hasHeightForWidth())
+        self.framePage1_second.setSizePolicy(sizePolicy)
+        self.framePage1_second.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.framePage1_second.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.framePage1_second.setObjectName("framePage1_second")
+        self.verticalLayout_5.addWidget(self.framePage1_second)
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.verticalLayout_4.addWidget(self.scrollArea)
+        self.stackedWidget.addWidget(self.page_1)
+        self.verticalLayout.addWidget(self.stackedWidget)
         self.horizontalLayout.addLayout(self.verticalLayout)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.labelPageName.setText(_translate("MainWindow", "Организации"))
-        self.label_2.setText(_translate("MainWindow", "Иконка"))
+        self.pushButton.setText(_translate("MainWindow", "Notif"))
+        self.label_2.setText(_translate("MainWindow", "Icon"))

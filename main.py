@@ -108,6 +108,8 @@ class QNotification(QtWidgets.QWidget):
     def __init__(self, parent=None):
         QWidget.__init__(self, parent=parent)
 
+        self.parent = parent
+
         self.size = 300
         self.height = 165
         # self.verticalLayout = QtWidgets.QVBoxLayout(self)
@@ -131,6 +133,15 @@ class QNotification(QtWidgets.QWidget):
         self.organization = values[5]
 
     def paintEvent(self, event):
+        countPage = (self.parent.width() - 40 - 20) // 320
+        value = ((self.parent.width() - 40 - 40) - countPage * 300 - (countPage - 1) * 20) // countPage - 1
+
+
+        if value < 0:
+            value = 0
+
+        self.setFixedSize(self.size + value, self.height)
+
         painter = QPainter()
         painter.begin(self)
 
@@ -139,7 +150,7 @@ class QNotification(QtWidgets.QWidget):
 
         painter.setBrush(brushMain)
         painter.setPen(QtGui.QPen(QtGui.QColor("white"), 1))  # цвет пера - границы
-        painter.drawRoundedRect(0, 0, self.size, self.height, 15.0, 15.0)
+        painter.drawRoundedRect(0, 0, self.size + value, self.height, 10.0, 10.0)
 
         painter.setBrush(brushLine)
         painter.setPen(QtGui.QPen(QColor(224, 228, 231), 2))  # цвет пера - границы
@@ -295,12 +306,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         QMainWindow.__init__(self)
         self.setupUi(self)
 
-       # self.layoutF = FlowLayout(self.scrollAreaWidgetContents, hspacing=20, vspacing=20, margin=2)
-
-        """for i in range(1, 50):
+        self.layoutF = FlowLayout(parent=self.framePage1_second, hspacing=20, vspacing=20, margin=20)
+        for i in range(1, 50):
             wdgt = QNotification(self.scrollAreaWidgetContents)
             wdgt.setData()
-            self.layoutF.addWidget(wdgt)"""
+            self.layoutF.addWidget(wdgt)
 
         name = ["CТУДЕНТЫ", "РУКОВОДИТЕЛИ", "ПРАКТИКИ"]
         for i in name:
@@ -308,6 +318,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             wdgt.setText(i)
             wdgt.setValue(random.randint(0, 1000))
             self.horizontalLayout_3.addWidget(wdgt)
+
+        shadow = QtWidgets.QGraphicsDropShadowEffect(
+            self,
+            blurRadius=7.0,
+            color=QtGui.QColor(0, 0, 0, 50),
+            offset=QtCore.QPointF(0, 0)
+        )
+        self.frameBarTop.setGraphicsEffect(shadow)
 
         # self.setGeometry(300, 300, 355, 280)
         # self.wdgt = QNotification(parent=self, size=300)
