@@ -4,15 +4,50 @@ import sys
 from PyQt5 import QtGui, QtWidgets, QtCore
 from PyQt5.QtCore import Qt, QRect, QEvent, QAbstractItemModel
 from PyQt5.QtGui import QBrush, QPainter, QColor, QFont, QFontMetrics, QImage, QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QAbstractItemView, QLayout, QStyle, QSizePolicy
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QAbstractItemView, QLayout, QStyle, QSizePolicy, \
+    QGraphicsDropShadowEffect
 from res import *
 from testWind import Ui_MainWindow
+
+
+class QNotificationBubble(QtWidgets.QWidget):
+    def __init__(self, parent=None, parentButton=None):
+        QWidget.__init__(self, parent=parent)#, parentButton=parentButton)
+        self.parent = parent
+        self.parentButton = parentButton
+        self.value = 0
+        self.setFixedSize(14, 14)
+
+    def setValue(self, value: int):
+        self.value = value
+
+    def paintEvent(self, event):
+        pos = self.parentButton.pos()
+        self.setGeometry(pos.x() + 32 - 7, pos.y() - 7, 14, 14)
+
+        painter = QPainter()
+        painter.begin(self)
+        painter.setRenderHint(QPainter.Antialiasing)
+
+        brushMain = QBrush(QColor(255, 29, 49))
+        painter.setBrush(brushMain)
+        painter.setPen(QtGui.QPen(QColor(255, 29, 49), 1))
+        painter.drawRoundedRect(0, 0, 14, 14, 10.0, 10.0)
+
+        painter.setFont(QFont('Arial', 8, QFont.Bold))
+        fm = QFontMetrics(QFont('Arial', 8, QFont.Bold))
+
+        painter.setPen(QColor(255, 255, 255))
+        painter.drawText(QRect(0, 0, 14, 14), Qt.TextWordWrap, str(self.value))
+
+        painter.end()
 
 
 class QMenuButton(QtWidgets.QWidget):
     def __init__(self, parent=None):
         QWidget.__init__(self, parent=parent)
         self.toggle = False
+        self.valueVisible = False
 
         self.text = ""
         self.value = 0
@@ -24,7 +59,7 @@ class QMenuButton(QtWidgets.QWidget):
         fm = QFontMetrics(QFont('Arial', 8, QFont.Bold))
         self.width = fm.width(self.text)
 
-        if self.value != 0:
+        if self.valueVisible:
             self.width = self.width + fm.width(str(self.value)) + 15 + 1
 
         self.setFixedSize(self.width, self.height)
@@ -38,10 +73,12 @@ class QMenuButton(QtWidgets.QWidget):
         self.__setWidth()
 
     def disableValue(self):
-        pass
+        if self.valueVisible:
+            self.valueVisible = False
 
     def enableValue(self):
-        pass
+        if not self.valueVisible:
+            self.valueVisible = True
 
     def mousePressEvent(self, event):
         """if not self.toggle:
@@ -76,7 +113,7 @@ class QMenuButton(QtWidgets.QWidget):
         painter.setPen(color)
         painter.drawText(QRect(0, self.height // 2 - 4, fm.width(self.text), 20), Qt.TextWordWrap, self.text)
 
-        if self.value > 0:
+        if self.valueVisible:
             if self.toggle:
                 colorText = QColor(255, 255, 255)
                 colorBubble = QColor(0, 104, 255)
@@ -134,7 +171,7 @@ class QNotification(QtWidgets.QWidget):
 
     def paintEvent(self, event):
         countPage = (self.parent.width() - 40 - 20) // 320
-        value = ((self.parent.width() - 40 - 40) - countPage * 300 - (countPage - 1) * 20) // countPage - 1
+        value = ((self.parent.width() - 40 - 40) - countPage * 300 - (countPage - 1) * 20) // countPage - 10
 
 
         if value < 0:
@@ -306,11 +343,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         QMainWindow.__init__(self)
         self.setupUi(self)
 
-        self.layoutF = FlowLayout(parent=self.framePage1_second, hspacing=20, vspacing=20, margin=20)
+        """self.layoutF = FlowLayout(parent=self.framePage1_second, hspacing=20, vspacing=20, margin=20)
         for i in range(1, 50):
             wdgt = QNotification(self.scrollAreaWidgetContents)
             wdgt.setData()
-            self.layoutF.addWidget(wdgt)
+            self.layoutF.addWidget(wdgt)"""
 
         name = ["CТУДЕНТЫ", "РУКОВОДИТЕЛИ", "ПРАКТИКИ"]
         for i in name:
@@ -321,12 +358,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         shadow = QtWidgets.QGraphicsDropShadowEffect(
             self,
-            blurRadius=7.0,
-            color=QtGui.QColor(0, 0, 0, 50),
+            blurRadius=9.0,
+            color=QColor(0, 0, 0, 50),
             offset=QtCore.QPointF(0, 0)
         )
-        self.frameBarTop.setGraphicsEffect(shadow)
+        #self.frameBarTop.setGraphicsEffect(shadow)
 
+        self.notifBubble = QNotificationBubble(self.pushButton, self.pushButton)
+        #self.horizontalLayout_2.addWidget(self.notifBubble)
         # self.setGeometry(300, 300, 355, 280)
         # self.wdgt = QNotification(parent=self, size=300)
         self.show()

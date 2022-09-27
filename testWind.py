@@ -21,6 +21,10 @@ class Ui_MainWindow(object):
 "    font: 10pt \"Arial\";\n"
 "}\n"
 "\n"
+"#MainWindow {\n"
+"    background-color: rgb(248, 249, 251); \n"
+"}\n"
+"\n"
 "#labelPageName {\n"
 "    font-weight: bold;\n"
 "    font-size: 12pt;\n"
@@ -28,31 +32,48 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "#frameBarLeft { background-color: rgb(0, 104, 255); }\n"
-"#frameBarTop { background-color: rgb(255, 255, 255); }\n"
-"#frameMain { background-color: rgb(248, 249, 251); }\n"
+"\n"
+"#frameBarTop {\n"
+"    background-color: rgb(255, 255, 255); \n"
+"    border-bottom: 1px solid rgb(243, 244, 245);\n"
+"}\n"
 "\n"
 "#labelIcon {\n"
 "    border-image: url(:/icons/logo_white.png);\n"
 "}\n"
 "\n"
-"#pushButtonTop_1, #pushButtonTop_2, #pushButtonTop_3 {\n"
-"    padding: 0 0px;\n"
-"}\n"
-"#frameMain { \n"
-"    background-color: rgb(237, 238, 240);\n"
-"}\n"
 "#framePage1_first { \n"
 "    background-color: rgb(255, 255, 255);\n"
 "    border-top-left-radius: 10px;\n"
 "    border-top-right-radius: 10px;\n"
+"\n"
+"    border-top: 1px solid rgb(243, 244, 245);\n"
+"    border-left: 1px solid rgb(243, 244, 245);\n"
+"    border-right: 1px solid rgb(243, 244, 245);\n"
 "}\n"
 "#framePage1_second {\n"
 "    background-color: rgb(255, 255, 255);\n"
 "    border-bottom-left-radius: 10px;\n"
 "    border-bottom-right-radius: 10px;\n"
+"\n"
+"    border-bottom: 1px solid rgb(243, 244, 245);\n"
+"    border-left: 1px solid rgb(243, 244, 245);\n"
+"    border-right: 1px solid rgb(243, 244, 245);\n"
 "}\n"
 "#scrollArea {\n"
 "    border: None;\n"
+"}\n"
+"#scrollAreaWidgetContents, #scrollArea  { background-color: transparent; }\n"
+"\n"
+"QPushButton {\n"
+"    border-radius: 5px;\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    color: rgb(83, 104, 130);\n"
+"    border: 1px solid rgb(243, 244, 245);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(250, 250, 250);\n"
 "}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -102,10 +123,13 @@ class Ui_MainWindow(object):
         self.pushButton_5.setObjectName("pushButton_5")
         self.verticalLayout_2.addWidget(self.pushButton_5)
         self.horizontalLayout.addWidget(self.frameBarLeft)
-        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.frameBar = QtWidgets.QFrame(self.centralwidget)
+        self.frameBar.setObjectName("frameBar")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.frameBar)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.frameBarTop = QtWidgets.QFrame(self.centralwidget)
+        self.frameBarTop = QtWidgets.QFrame(self.frameBar)
         self.frameBarTop.setMinimumSize(QtCore.QSize(0, 55))
         self.frameBarTop.setMaximumSize(QtCore.QSize(16777215, 55))
         self.frameBarTop.setFrameShape(QtWidgets.QFrame.NoFrame)
@@ -154,7 +178,7 @@ class Ui_MainWindow(object):
         self.label_2.setObjectName("label_2")
         self.horizontalLayout_2.addWidget(self.label_2)
         self.verticalLayout.addWidget(self.frameBarTop)
-        self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
+        self.stackedWidget = QtWidgets.QStackedWidget(self.frameBar)
         self.stackedWidget.setObjectName("stackedWidget")
         self.page_1 = QtWidgets.QWidget()
         self.page_1.setObjectName("page_1")
@@ -166,7 +190,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 720, 484))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 722, 486))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_5.setContentsMargins(20, 20, 20, 20)
@@ -200,7 +224,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addWidget(self.scrollArea)
         self.stackedWidget.addWidget(self.page_1)
         self.verticalLayout.addWidget(self.stackedWidget)
-        self.horizontalLayout.addLayout(self.verticalLayout)
+        self.horizontalLayout.addWidget(self.frameBar)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
