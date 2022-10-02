@@ -1,5 +1,22 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icon_user.png</file>
+    <file>icon_back.png</file>
+    <file>icon_exit.png</file>
+    <file>icon_groups.png</file>
+    <file>icon_manager.png</file>
+    <file>icon_organization.png</file>
+    <file>icon_book.png</file>
+    <file>icon_settings.png</file>
+    <file>icon_settings_white.png</file>
+    <file>icon_calendar.png</file>
+    <file>icon_search.png</file>
+    <file>icon_calendar_white.png</file>
+    <file>icon_stat.png</file>
+    <file>icon_list.png</file>
+    <file>icon_info.png</file>
+    <file>filter.png</file>
+    <file>icon_bell.png</file>
     <file>logo_white.png</file>
     <file>icon_check.png</file>
     <file>logo_blue.png</file>

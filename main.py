@@ -2,45 +2,127 @@ import random
 import sys
 
 from PyQt5 import QtGui, QtWidgets, QtCore
-from PyQt5.QtCore import Qt, QRect, QEvent, QAbstractItemModel
-from PyQt5.QtGui import QBrush, QPainter, QColor, QFont, QFontMetrics, QImage, QStandardItemModel, QStandardItem
+from PyQt5.QtCore import Qt, QRect, QEvent, QAbstractItemModel, QPoint, QPropertyAnimation
+from PyQt5.QtGui import QBrush, QPainter, QColor, QFont, QFontMetrics, QImage, QStandardItemModel, QStandardItem, \
+    QPixmap
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QAbstractItemView, QLayout, QStyle, QSizePolicy, \
-    QGraphicsDropShadowEffect
+    QGraphicsDropShadowEffect, QHBoxLayout, QCommonStyle, QScrollBar
+
+from mdls.QNotifyWrapWind import QNotifyWrapWind
+from mdls.QTableItemPracticeCard import QTableItemPracticeCard
+from mdls.QWrapScrollBar import QCustomScrollBar
 from res import *
 from testWind import Ui_MainWindow
 
 
-class QNotificationBubble(QtWidgets.QWidget):
-    def __init__(self, parent=None, parentButton=None):
-        QWidget.__init__(self, parent=parent)#, parentButton=parentButton)
-        self.parent = parent
-        self.parentButton = parentButton
-        self.value = 0
-        self.setFixedSize(14, 14)
 
-    def setValue(self, value: int):
-        self.value = value
+
+class QToast(QtWidgets.QWidget):
+    def __init__(self, parent=None):
+        QWidget.__init__(self, parent=parent)
+        self.setFixedSize(10, 10)
+        #self.setPosition(QPoint(self.parent().rect().x() - 30, self.parent().rect().y() - 30))
+
+        self.setWindowFlags(Qt.FramelessWindowHint | Qt.SubWindow)
+        #self.setAttribute(Qt.WA_TransparentForMouseEvents, True)
+
+        self.__initVal(parent)
+
+    def __initVal(self, parent):
+        self.__parent = parent
+        self.__parent.installEventFilter(self)
+        #self.installEventFilter(self)
+
 
     def paintEvent(self, event):
-        pos = self.parentButton.pos()
-        self.setGeometry(pos.x() + 32 - 7, pos.y() - 7, 14, 14)
-
         painter = QPainter()
         painter.begin(self)
         painter.setRenderHint(QPainter.Antialiasing)
 
-        brushMain = QBrush(QColor(255, 29, 49))
-        painter.setBrush(brushMain)
-        painter.setPen(QtGui.QPen(QColor(255, 29, 49), 1))
-        painter.drawRoundedRect(0, 0, 14, 14, 10.0, 10.0)
-
-        painter.setFont(QFont('Arial', 8, QFont.Bold))
-        fm = QFontMetrics(QFont('Arial', 8, QFont.Bold))
-
-        painter.setPen(QColor(255, 255, 255))
-        painter.drawText(QRect(0, 0, 14, 14), Qt.TextWordWrap, str(self.value))
+        painter.setBrush(QBrush(QColor("red")))
+        painter.setPen(QtGui.QPen(QtGui.QColor("red"), 1))
+        painter.drawRect(0, 0, 10, 10)
 
         painter.end()
+
+    def show(self):
+        #self.raise_()
+        return super().show()
+
+    def eventFilter(self, obj, e):
+        if e.type() == 14:
+            self.setPosition(QPoint(0, self.parent().height() - 10))
+        return super().eventFilter(obj, e)
+
+    def setPosition(self, pos):
+        geo = self.geometry()
+        #geo.moveCenter(pos)
+        geo.moveTo(pos)
+        self.setGeometry(geo)
+
+
+class QTableItem(QtWidgets.QWidget):
+    def __init__(self, parent=None):
+        QWidget.__init__(self, parent=parent)
+        self.text = ""
+        self.pixmap = QtGui.QImage()
+        #self.pixmap.fill(QtGui.qRgb(0, 0, 0))
+
+        self.height = 60
+
+        self.color = QColor(255, 255, 255)
+        self.setFixedSize(self.parent().width(), 60)
+
+    def setText(self, text: str):
+        self.text = text
+
+    def setImage(self, img, imgType='png'):
+        imgdata = QImage.fromData(img, imgType)
+        imgdata.convertToFormat(QImage.Format_ARGB32)
+        #imgdata = imgdata.copy(QRect(0, 0, imgdata.width(), imgdata.height()))
+
+        imgdata = imgdata.scaled(40, 40, Qt.KeepAspectRatioByExpanding, Qt.SmoothTransformation)
+
+        out_img = QImage(40, 40, QImage.Format_ARGB32)
+        out_img.fill(Qt.transparent)
+
+        painter = QPainter(out_img)
+
+        painter.setBrush(QBrush(imgdata))
+        painter.setPen(Qt.NoPen)
+        painter.drawEllipse(0, 0, 40, 40)
+        painter.end()
+
+        self.pixmap = out_img
+
+    def paintEvent(self, event):
+        self.setFixedSize(self.parent().width(), 60)
+        painter = QPainter()
+        painter.begin(self)
+        painter.setRenderHint(QPainter.Antialiasing)
+
+        painter.setBrush(QBrush(self.color))
+        painter.setPen(QtGui.QPen(self.color, 1))
+        painter.drawRect(0, 0, self.parent().width(), self.height)
+
+        painter.setBrush(QBrush(QColor(220, 225, 230)))
+        painter.setPen(QtGui.QPen(QColor(220, 225, 230), 1))
+        painter.drawRect(0, self.height, self.parent().width(), self.height)
+
+        painter.drawImage(QRect(10, 10, 40, 40), self.pixmap)
+
+        painter.setFont(QFont('Arial', 8, QFont.Bold))
+        painter.setPen(QColor(26, 34, 47))
+        painter.drawText(QRect(60, 9, self.parent().width() - 60, 42), Qt.TextWordWrap, self.text)
+        painter.end()
+
+    def leaveEvent(self, event):
+        self.color = QColor(255, 255, 255)
+        self.update()
+
+    def enterEvent(self, event):
+        self.color = QColor(245, 246, 248)
+        self.update()
 
 
 class QMenuButton(QtWidgets.QWidget):
@@ -141,14 +223,14 @@ class QMenuButton(QtWidgets.QWidget):
         painter.end()
 
 
-class QNotification(QtWidgets.QWidget):
+class QCardWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
         QWidget.__init__(self, parent=parent)
 
         self.parent = parent
 
-        self.size = 300
-        self.height = 165
+        self.size = 302
+        self.height = 167
         # self.verticalLayout = QtWidgets.QVBoxLayout(self)
 
         self.name = None
@@ -158,8 +240,9 @@ class QNotification(QtWidgets.QWidget):
         self.supervisor = None
         self.organization = None
 
+        self.borderColor = QColor(234, 234, 234)
         self.setFixedSize(self.size, self.height)
-        self.__setShadow(QtGui.QColor(0, 0, 0, 50))
+        #self.__setShadow(QtGui.QColor(0, 0, 0, 50))
 
     def setData(self, values: list = ["Фамилия", "Имя", "Отчество", "Группа", "Руководитель", "Организация"]):
         self.name = values[0]
@@ -170,65 +253,57 @@ class QNotification(QtWidgets.QWidget):
         self.organization = values[5]
 
     def paintEvent(self, event):
-        countPage = (self.parent.width() - 40 - 20) // 320
-        value = ((self.parent.width() - 40 - 40) - countPage * 300 - (countPage - 1) * 20) // countPage - 10
+        countPage = (self.parent.width() - 20 - 40) // 322
+        value = ((self.parent.width() - 20 - 40) - countPage * 322) // countPage
+        print((self.parent.width() - 20 - 40), self.width(), value, countPage)
 
-
-        if value < 0:
-            value = 0
 
         self.setFixedSize(self.size + value, self.height)
 
         painter = QPainter()
         painter.begin(self)
+        painter.setRenderHint(QPainter.Antialiasing)
 
         brushMain = QBrush(QColor(255, 255, 255))
         brushLine = QBrush(QColor(224, 228, 231))
 
         painter.setBrush(brushMain)
-        painter.setPen(QtGui.QPen(QtGui.QColor("white"), 1))  # цвет пера - границы
-        painter.drawRoundedRect(0, 0, self.size + value, self.height, 10.0, 10.0)
+        painter.setPen(QtGui.QPen(self.borderColor, 1))  # цвет пера - границы
+        painter.drawRoundedRect(1, 1, self.size + value - 2, self.height - 2, 10.0, 10.0)
 
         painter.setBrush(brushLine)
         painter.setPen(QtGui.QPen(QColor(224, 228, 231), 2))  # цвет пера - границы
 
-        painter.drawLine(21, 85, self.size - 22, 85)
+        painter.drawLine(22, 86, self.size - 22 + value, 85)
 
         painter.setPen(QColor(26, 34, 47))
         painter.setFont(QFont('Arial', 11, QFont.Bold))
-        painter.drawText(QRect(20, 20, 100, 60), Qt.TextWordWrap, f"{self.name}\n{self.surname}\n{self.patronymic}")
+        painter.drawText(QRect(21, 21, 100, 60), Qt.TextWordWrap, f"{self.name}\n{self.surname}\n{self.patronymic}")
 
         fm = QFontMetrics(QFont('Arial', 11))
         painter.setFont(QFont('Arial', 11))
 
         painter.setPen(QColor(146, 153, 159))
-        painter.drawText(QRect(self.size - 20 - fm.width(self.group), 20, 100, 60), Qt.TextWordWrap, self.group)
+        painter.drawText(QRect(self.size - 20 - fm.width(self.group) + 1 + value, 21, 100, 60), Qt.TextWordWrap, self.group)
 
         painter.setFont(QFont('Arial', 10))
-        painter.drawText(QRect(20, 95, self.size - 40, 20), Qt.TextWordWrap, f"     {self.supervisor}")
+        painter.drawText(QRect(21, 96, self.size - 40, 20), Qt.TextWordWrap, f"     {self.supervisor}")
 
-        painter.drawImage(QRect(20, 96, 14, 14), QImage(":/icons/icon_2.png"), QRect(0, 0, 14, 14))
-        painter.drawImage(QRect(20, 116, 14, 14), QImage(":/icons/icon_1.png"), QRect(0, 0, 14, 14))
+        painter.drawImage(QRect(21, 97, 14, 14), QImage(":/icons/icon_2.png"), QRect(0, 0, 14, 14))
+        painter.drawImage(QRect(21, 117, 14, 14), QImage(":/icons/icon_1.png"), QRect(0, 0, 14, 14))
 
         painter.setFont(QFont('Arial', 10))
-        painter.drawText(QRect(20, 115, self.size - 40, 35), Qt.TextWordWrap, f"     {self.organization}")
+        painter.drawText(QRect(21, 116, self.size - 40, 35), Qt.TextWordWrap, f"     {self.organization}")
 
         painter.end()
 
-    def __setShadow(self, shadowColor):
-        shadow = QtWidgets.QGraphicsDropShadowEffect(
-            self,
-            blurRadius=7.0,
-            color=shadowColor,
-            offset=QtCore.QPointF(0, 0)
-        )
-        self.setGraphicsEffect(shadow)
-
     def enterEvent(self, event):
-        self.__setShadow(QtGui.QColor(0, 104, 255, 200))
+        self.borderColor = QColor(0, 104, 255)
+        self.update()
 
     def leaveEvent(self, event):
-        self.__setShadow(QtGui.QColor(0, 0, 0, 50))
+        self.borderColor = QColor(234, 234, 234)
+        self.update()
 
     def mousePressEvent(self, event):
         print("Кар")
@@ -344,30 +419,123 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
 
         """self.layoutF = FlowLayout(parent=self.framePage1_second, hspacing=20, vspacing=20, margin=20)
-        for i in range(1, 50):
-            wdgt = QNotification(self.scrollAreaWidgetContents)
+        for i in range(1, 10):
+            wdgt = QCardWidget(self.scrollAreaWidgetContents)
             wdgt.setData()
-            self.layoutF.addWidget(wdgt)"""
+            self.layoutF.addWidget(wdgt)
 
-        name = ["CТУДЕНТЫ", "РУКОВОДИТЕЛИ", "ПРАКТИКИ"]
+        name = ["CТУДЕНТЫ", "РУКОВОДИТЕЛИ", "ПРАКТИКИ", "ОРГАНИЗАЦИИ"]
         for i in name:
             wdgt = QMenuButton(self.frameBarTop)
             wdgt.setText(i)
             wdgt.setValue(random.randint(0, 1000))
-            self.horizontalLayout_3.addWidget(wdgt)
+            self.horizontalLayout_3.addWidget(wdgt)"""
 
-        shadow = QtWidgets.QGraphicsDropShadowEffect(
-            self,
-            blurRadius=9.0,
-            color=QColor(0, 0, 0, 50),
-            offset=QtCore.QPointF(0, 0)
+
+
+        """self.notifBubble = QNotificationBubble(self.pushButtonNotification)
+        self.notifBubble.setValue(100)"""
+
+
+
+        image = open("./photo_organization.png", "rb").read()
+
+        name1 = [
+            'Мамонтов Корнелий Артемович',
+            'Никифоров Аполлон Христофорович',
+            'Карпов Корней Никитевич',
+            'Анисимов Андрей Мэлорович',
+            'Устинов Власий Тихонович',
+            'Романов Казимир Матвеевич',
+            'Филатов Лазарь Леонидович',
+            'Афанасьев Мстислав Геннадиевич',
+            'Федосеев Аполлон Ярославович',
+            'Гаврилов Казимир Николаевич',
+            'Селиверстов Бенедикт Лаврентьевич',
+            'Блохин Аввакум Дмитрьевич',
+            'Лобанов Геннадий Максович',
+            'Панов Абрам Пётрович',
+            'Попов Артур Оскарович',
+            'Петухов Гарри Арсеньевич',
+            'Журавлёв Юстин Тимофеевич',
+            'Яковлев Афанасий Тимурович',
+            'Сорокин Михаил Олегович',
+            'Щербаков Андрей Романович'
+        ]
+        name2 = [
+            'Трофимова Святослава Георгьевна',
+            'Ермакова Диодора Кимовна',
+            'Третьякова Хельга Пётровна',
+            'Кудряшова Гражина Демьяновна'
+        ]
+        group = [
+            'П2-19',
+            'БГ20',
+            'БТС1-20',
+            'Ю2-20',
+            'П1-20',
+            'П1-19'
+        ]
+        date = [
+            ['19.08.2022', '09.12.2022'],
+            ['01.10.2022', '09.12.2022'],
+            ['01.09.2022', '05.10.2022'],
+            ['04.12.2022', '29.12.2022'],
+            ['17.02.2022', '23.03.2022']
+        ]
+
+        org = [
+            'ООО "Нерюнгринское Угледобывающее Предприятие"',
+            'ОАО "Рязанский Цемент"',
+            'АО "Поляны"',
+            'ООО "ФИНР"',
+            'ООО "ГКР"',
+            'АО "Разрез Тугнуйский"',
+            'ПАО "Южный Кузбасс"',
+            'ООО "Суэк-Хакасия"',
+            'ООО "Котен"',
+            'ООО «Разрез Верхнетешский»',
+            'ООО "Элси Майнинг Восток"',
+            'ООО "Промпереработка"',
+            'АО "УК "Кузбассразрезуголь"',
+            'ООО "Шахта Байкаимская"',
+            'АО "Суэк-Красноярск"',
+            'АО "Донуголь"',
+            'ООО "Бирауголь"',
+            'ООО "ХУР"'
+        ]
+
+        """for i in org[:5]:
+            wdgt = QTableItem(self.ListOwerviewScrollAreaMain)
+            wdgt.setImage(image)
+            wdgt.setText(i)
+            self.verticalLayout_8.addWidget(wdgt)"""
+
+        for _ in range(10):
+            wdgt = QTableItemPracticeCard(self.ListOwerviewScrollAreaMain)
+            wdgt.setData(
+                name=name1[random.randint(0, len(name1) - 1)],
+                group=group[random.randint(0, len(group) - 1)],
+                curator=name2[random.randint(0, len(name2) - 1)],
+                interval=date[random.randint(0, len(date) - 1)],
+                semester=random.randint(3, 7)
+            )
+            self.verticalLayout_8.addWidget(wdgt)
+
+        spacerItem12 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_8.addItem(spacerItem12)
+
+        self.ListOwerviewScrollAreaMain.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+
+        self.vsb = QCustomScrollBar(
+            self.ListOwerviewScrollAreaMain,
+            parentScrollBar=self.ListOwerviewScrollAreaMain.verticalScrollBar()
         )
-        #self.frameBarTop.setGraphicsEffect(shadow)
 
-        self.notifBubble = QNotificationBubble(self.pushButton, self.pushButton)
-        #self.horizontalLayout_2.addWidget(self.notifBubble)
-        # self.setGeometry(300, 300, 355, 280)
-        # self.wdgt = QNotification(parent=self, size=300)
+
+
+        self.toast = QNotifyWrapWind(self.centralwidget)
+        self.leftMenuButtonNotifications.clicked.connect(self.toast.toggle)
         self.show()
 
 

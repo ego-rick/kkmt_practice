@@ -1,0 +1,42 @@
+
+	- БД - 
+
+? - Users:
+	- login - str
+	- password - str
+	- permission - int
+
+? - Permissions:
+	- name
+
+- Groups:
+	- name - str
+	# - department - str
+
+- Students:
+	- group - int
+	- surname - str
+	- name - str
+	- patronymic - str
+	- mail - str
+	- number - str
+	
+- Curators:
+	- surname - str
+	- name - str
+	- patronymic - str
+	- post - str
+	- mail - str
+	- number - str
+	
+- Organizations:
+	- name - str
+	- address - str
+	- mail - str
+	- number - str
+	
+- Comments:
+	- org - int
+	# - user - int
+	
+	

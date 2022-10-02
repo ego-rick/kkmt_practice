@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'untitled.ui'
+# Form implementation generated from reading ui file 'untitled_v4.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -14,172 +14,437 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(780, 541)
-        MainWindow.setMinimumSize(QtCore.QSize(780, 0))
-        MainWindow.setStyleSheet("QWidget {\n"
+        MainWindow.resize(900, 594)
+        MainWindow.setMinimumSize(QtCore.QSize(900, 0))
+        MainWindow.setStyleSheet("/*----------------------------------------------------------------------------------------------------------*/\n"
+"/*                                                                     B A S E                                                                */\n"
+"/*----------------------------------------------------------------------------------------------------------*/\n"
+"\n"
+"QWidget {\n"
 "    color: rgb(26, 34, 47);\n"
 "    font: 10pt \"Arial\";\n"
 "}\n"
+"#MainWindow { background-color: rgb(248, 249, 251); }\n"
 "\n"
-"#MainWindow {\n"
-"    background-color: rgb(248, 249, 251); \n"
+"QLineEdit { min-height: 30px; }\n"
+"QTextEdit { min-height: 30px; }\n"
+"QLineEdit, QTextEdit { padding: 0 8px; }\n"
+"QLineEdit, QTextEdit, #ListOwerviewListViewComments {\n"
+"    border-radius: 10px;\n"
+"    /*border: 1px solid rgb(134, 141, 157);\n"
+"    background-color: rgb(248, 249, 251);*/\n"
+"    border: 1px solid rgb(234, 234, 234);\n"
+"    background-color: rgb(255, 255, 255);\n"
+"}\n"
+"QLineEdit:focus, QTextEdit:focus { border: 1px solid rgb(0, 104, 255); }\n"
+"\n"
+"\n"
+"QPushButton, #labelUserIcon, #labelOrganizationIcon {\n"
+"    height: 30px;\n"
+"    border-radius: 10px;\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    color: rgb(83, 104, 130);\n"
+"    border: 1px solid rgb(234, 234, 234);\n"
+"    /*border: 1px solid rgb(243, 244, 245);*/\n"
+"}\n"
+"QPushButton:hover { background-color: rgb(250, 250, 250); }\n"
+"\n"
+"QScrollBar:vertical {\n"
+"    width: 14px;\n"
+"    border: none;\n"
+"    background-color: transparent;\n"
 "}\n"
 "\n"
-"#labelPageName {\n"
+"QScrollBar::handle:vertical {\n"
+"    min-height: 100px;\n"
+"    background-color: rgb(220, 225, 230);\n"
+"    border-style: none;\n"
+"    border-radius: 4px;\n"
+"    margin: 3px;\n"
+"}\n"
+"\n"
+"QScrollBar:horizontal {\n"
+"    height: 14px;\n"
+"    border: none;;\n"
+"    background-color: transparent;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:horizontal {\n"
+"    min-width: 100px;\n"
+"    background-color: rgb(220, 225, 230);\n"
+"    border-style: none;\n"
+"    border-radius: 4px;\n"
+"    margin: 3px;\n"
+"}\n"
+"QScrollBar::add-line:vertical, QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical, QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical, QScrollBar::sub-line:vertical, QScrollBar::sub-line:vertical:pressed, QScrollBar::add-line:vertical:pressed, QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal, QScrollBar::sub-line:horizontal:pressed, QScrollBar::add-line:horizontal:pressed, QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal, QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal { background: none; }\n"
+"\n"
+"#labelProgrammName {\n"
 "    font-weight: bold;\n"
 "    font-size: 12pt;\n"
 "}\n"
 "\n"
-"\n"
-"#frameBarLeft { background-color: rgb(0, 104, 255); }\n"
-"\n"
-"#frameBarTop {\n"
-"    background-color: rgb(255, 255, 255); \n"
-"    border-bottom: 1px solid rgb(243, 244, 245);\n"
+"Line {\n"
+"    border: 1px solid rgb(234, 234, 234);\n"
 "}\n"
 "\n"
-"#labelIcon {\n"
-"    border-image: url(:/icons/logo_white.png);\n"
+"/*----------------------------------------------------------------------------------------------------------*/\n"
+"/*                                                        PAGE ORGANIZATION                                                        */\n"
+"/*----------------------------------------------------------------------------------------------------------*/\n"
+"\n"
+"\n"
+"/* left side */\n"
+"#ListOwerviewButtonSearchFilter {\n"
+"    width: 30px; \n"
+"    height: 30px; \n"
+"    border-top-left-radius: 0px;\n"
+"    border-top-right-radius: 0px;\n"
+"    border-bottom-left-radius: 0px;\n"
+"    border-bottom-right-radius: 0px;\n"
+"    border: none;\n"
+"    border-top:1px solid rgb(234, 234, 234);\n"
+"    border-left: 1px solid rgb(234, 234, 234);\n"
+"    border-bottom: 1px solid rgb(234, 234, 234);\n"
 "}\n"
+"\n"
+"/* right side */\n"
+"#lineEdit { font: 10pt \"Courier\"; }\n"
+"#ListOwerviewLineEditComments {\n"
+"    border-radius: 0px;\n"
+"    border-top-left-radius: 10px;\n"
+"    border-bottom-left-radius: 10px;\n"
+"    /*border: 1px solid rgb(234, 234, 234);*/\n"
+"}\n"
+"\n"
+"/*----------------------------------------------------------------------------------------------------------*/\n"
+"/*                                                                    PAGE 1                                                                    */\n"
+"/*----------------------------------------------------------------------------------------------------------*/\n"
 "\n"
 "#framePage1_first { \n"
 "    background-color: rgb(255, 255, 255);\n"
 "    border-top-left-radius: 10px;\n"
 "    border-top-right-radius: 10px;\n"
 "\n"
-"    border-top: 1px solid rgb(243, 244, 245);\n"
-"    border-left: 1px solid rgb(243, 244, 245);\n"
-"    border-right: 1px solid rgb(243, 244, 245);\n"
+"    border-top: 1px solid rgb(234, 234, 234);\n"
+"    border-left: 1px solid rgb(234, 234, 234);\n"
+"    border-right: 1px solid rgb(234, 234, 234);\n"
 "}\n"
 "#framePage1_second {\n"
 "    background-color: rgb(255, 255, 255);\n"
-"    border-bottom-left-radius: 10px;\n"
-"    border-bottom-right-radius: 10px;\n"
-"\n"
-"    border-bottom: 1px solid rgb(243, 244, 245);\n"
-"    border-left: 1px solid rgb(243, 244, 245);\n"
-"    border-right: 1px solid rgb(243, 244, 245);\n"
+"    border-left: 1px solid rgb(234, 234, 234);\n"
+"    border-right: 1px solid rgb(234, 234, 234);\n"
 "}\n"
-"#scrollArea {\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"#scrollArea, #ListOwerviewScrollAreaMain, #ListOwerviewScrollAreaWidgetMain {\n"
 "    border: None;\n"
 "}\n"
-"#scrollAreaWidgetContents, #scrollArea  { background-color: transparent; }\n"
-"\n"
-"QPushButton {\n"
-"    border-radius: 5px;\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    color: rgb(83, 104, 130);\n"
-"    border: 1px solid rgb(243, 244, 245);\n"
+"#scrollAreaWidgetContents, #scrollArea, #ListOwerviewScrollAreaWidgetMain  {\n"
+"    background-color: transparent;\n"
 "}\n"
 "\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(250, 250, 250);\n"
-"}")
+"#ListOwerviewScrollAreaMain{\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-left: 1px solid rgb(234, 234, 234);\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"#leftMenuButtonNotifications {\n"
+"    margin: 22px 22px 0 0;\n"
+"}\n"
+"\n"
+"#pushButtonAdd, #ListOwerviewButtonEdit, #pushButtonSettingsSaveSQL, #pushButtonSettingsEditPassword {\n"
+"    background-color: rgb(0, 104, 255);\n"
+"    color: rgb(255, 255, 255);\n"
+"    border: 1px solid rgb(31, 136, 255);\n"
+"}\n"
+"#pushButtonAdd:hover, #ListOwerviewButtonEdit:hover, #pushButtonSettingsSaveSQL:hover, #pushButtonSettingsEditPassword:hover {\n"
+"    background-color: rgb(31, 136, 255);\n"
+"}\n"
+"\n"
+"\n"
+"#ListOwerviewButtonDelete {\n"
+"    background-color: rgb(230, 70, 70);\n"
+"    color: rgb(255, 255, 255);\n"
+"    border: 1px solid rgb(230, 70, 70);\n"
+"}\n"
+"#ListOwerviewButtonDelete:hover {\n"
+"    background-color: rgb(232, 92, 92);\n"
+"}\n"
+"\n"
+"#ListOwerviewButtonCreate {\n"
+"    background-color: rgb(75, 179, 75);\n"
+"    color: rgb(255, 255, 255);\n"
+"    border: none;\n"
+"    border-top-right-radius: 0px;\n"
+"    border-bottom-right-radius: 0px;\n"
+"    border-top-left-radius: 0px;\n"
+"}\n"
+"#ListOwerviewButtonCreate:hover {\n"
+"    background-color: rgb(97, 188, 97);\n"
+"}\n"
+"\n"
+"\n"
+"#frameBarLeft QPushButton {\n"
+"    background-color: transparent;\n"
+"    border: none;\n"
+"    text-align: left;\n"
+"    padding: 0 8px;\n"
+"    border-radius: 5px;\n"
+"    height: 32px;\n"
+"}\n"
+"\n"
+"#frameBarLeft QPushButton:hover {\n"
+"    background-color: rgb(229, 231, 235);\n"
+"}\n"
+"\n"
+"#ListOwerviewStackedWidget {\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-bottom-right-radius: 10px;\n"
+"    border-top-right-radius: 10px;\n"
+"\n"
+"    border-top: 1px solid rgb(234, 234, 234);\n"
+"    border-bottom: 1px solid rgb(234, 234, 234);\n"
+"    border-left: 1px solid rgb(234, 234, 234);\n"
+"    border-right: 1px solid rgb(234, 234, 234);\n"
+"}\n"
+"\n"
+"#ListOwerviewLineEditSearch {\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-top-left-radius: 10px;\n"
+"    border-top-right-radius: 0px;\n"
+"    border-bottom-left-radius: 0px;\n"
+"    border-bottom-right-radius: 0px;\n"
+"    border: none;\n"
+"    border-bottom: 1px solid rgb(234, 234, 234);\n"
+"    border-left: 1px solid rgb(234, 234, 234);\n"
+"    border-top: 1px solid rgb(234, 234, 234);\n"
+"}\n"
+"\n"
+"#ListOwerviewButtonSend {\n"
+"    background-color: rgb(0, 104, 255);\n"
+"    color: rgb(255, 255, 255);\n"
+"    border-top-right-radius: 10px;\n"
+"    border-bottom-right-radius: 10px;\n"
+"    border-top-left-radius: 0px;\n"
+"    border-bottom-left-radius: 0px;\n"
+"    border: 1px solid rgb(0, 104, 255);\n"
+"    padding: 0 8px;\n"
+"\n"
+"}\n"
+"\n"
+"#labelSettings_1, #labelSettings_2 {\n"
+"    padding: 0 8px;\n"
+"    min-height: 30px;\n"
+"    border-top-right-radius: 10px;\n"
+"    border-bottom-right-radius: 0px;\n"
+"    border-top-left-radius: 10px;\n"
+"    border-bottom-left-radius: 0px;\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border: 1px solid rgb(234, 234, 234);\n"
+"}\n"
+"\n"
+"#frameSettings_1, #frameSettings_2 {\n"
+"    /*border-top-right-radius: 0px;*/\n"
+"    border-bottom-right-radius: 10px;\n"
+"    /*border-top-left-radius: 0px;*/\n"
+"    border-bottom-left-radius: 10px;\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    border-left: 1px solid rgb(234, 234, 234);\n"
+"    border-right: 1px solid rgb(234, 234, 234);\n"
+"    /*border-top: 1px solid rgb(234, 234, 234);*/\n"
+"    border-bottom: 1px solid rgb(234, 234, 234);\n"
+"}\n"
+"\n"
+"#ListOwerviewButtonSend:hover {\n"
+"    background-color: rgb(31, 136, 255);\n"
+"    border: 1px solid rgb(31, 136, 255);\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"/*------------------------------------------------------------------------------------------------------------*/")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout.setSpacing(0)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.frameBarLeft = QtWidgets.QFrame(self.centralwidget)
-        self.frameBarLeft.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2.setSpacing(0)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.frameMain = QtWidgets.QFrame(self.centralwidget)
+        self.frameMain.setMaximumSize(QtCore.QSize(1150, 16777215))
+        self.frameMain.setObjectName("frameMain")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.frameMain)
+        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_4.setSpacing(0)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.frameBarLeft = QtWidgets.QFrame(self.frameMain)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frameBarLeft.sizePolicy().hasHeightForWidth())
+        self.frameBarLeft.setSizePolicy(sizePolicy)
+        self.frameBarLeft.setMinimumSize(QtCore.QSize(150, 0))
+        self.frameBarLeft.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.frameBarLeft.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frameBarLeft.setObjectName("frameBarLeft")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.frameBarLeft)
-        self.verticalLayout_2.setContentsMargins(12, 12, 12, 12)
-        self.verticalLayout_2.setSpacing(12)
+        self.verticalLayout_2.setContentsMargins(20, 20, 0, 20)
+        self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.labelIcon = QtWidgets.QLabel(self.frameBarLeft)
-        self.labelIcon.setMinimumSize(QtCore.QSize(32, 32))
+        self.labelIcon.setMinimumSize(QtCore.QSize(40, 40))
+        self.labelIcon.setMaximumSize(QtCore.QSize(40, 40))
+        self.labelIcon.setStyleSheet("")
         self.labelIcon.setText("")
+        self.labelIcon.setPixmap(QtGui.QPixmap(":/icons/logo_blue.png"))
+        self.labelIcon.setScaledContents(True)
         self.labelIcon.setObjectName("labelIcon")
-        self.verticalLayout_2.addWidget(self.labelIcon)
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_2.addWidget(self.labelIcon, 0, QtCore.Qt.AlignHCenter)
+        self.labelProgrammName = QtWidgets.QLabel(self.frameBarLeft)
+        self.labelProgrammName.setAlignment(QtCore.Qt.AlignCenter)
+        self.labelProgrammName.setWordWrap(False)
+        self.labelProgrammName.setObjectName("labelProgrammName")
+        self.verticalLayout_2.addWidget(self.labelProgrammName)
+        spacerItem = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         self.verticalLayout_2.addItem(spacerItem)
-        self.pushButton_2 = QtWidgets.QPushButton(self.frameBarLeft)
-        self.pushButton_2.setMinimumSize(QtCore.QSize(32, 32))
-        self.pushButton_2.setMaximumSize(QtCore.QSize(32, 32))
-        self.pushButton_2.setText("")
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.verticalLayout_2.addWidget(self.pushButton_2)
-        self.pushButton_3 = QtWidgets.QPushButton(self.frameBarLeft)
-        self.pushButton_3.setMinimumSize(QtCore.QSize(32, 32))
-        self.pushButton_3.setMaximumSize(QtCore.QSize(32, 32))
-        self.pushButton_3.setText("")
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.verticalLayout_2.addWidget(self.pushButton_3)
-        self.pushButton_4 = QtWidgets.QPushButton(self.frameBarLeft)
-        self.pushButton_4.setMinimumSize(QtCore.QSize(32, 32))
-        self.pushButton_4.setMaximumSize(QtCore.QSize(32, 32))
-        self.pushButton_4.setText("")
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.verticalLayout_2.addWidget(self.pushButton_4)
-        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.leftMenuButtonProfile = QtWidgets.QPushButton(self.frameBarLeft)
+        self.leftMenuButtonProfile.setStyleSheet("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icons/icon_user.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.leftMenuButtonProfile.setIcon(icon)
+        self.leftMenuButtonProfile.setObjectName("leftMenuButtonProfile")
+        self.verticalLayout_2.addWidget(self.leftMenuButtonProfile)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 5, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         self.verticalLayout_2.addItem(spacerItem1)
-        self.pushButton_5 = QtWidgets.QPushButton(self.frameBarLeft)
-        self.pushButton_5.setMinimumSize(QtCore.QSize(32, 32))
-        self.pushButton_5.setMaximumSize(QtCore.QSize(32, 32))
-        self.pushButton_5.setText("")
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.verticalLayout_2.addWidget(self.pushButton_5)
-        self.horizontalLayout.addWidget(self.frameBarLeft)
-        self.frameBar = QtWidgets.QFrame(self.centralwidget)
-        self.frameBar.setObjectName("frameBar")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.frameBar)
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout.setSpacing(0)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.frameBarTop = QtWidgets.QFrame(self.frameBar)
-        self.frameBarTop.setMinimumSize(QtCore.QSize(0, 55))
-        self.frameBarTop.setMaximumSize(QtCore.QSize(16777215, 55))
-        self.frameBarTop.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.frameBarTop.setFrameShadow(QtWidgets.QFrame.Plain)
-        self.frameBarTop.setObjectName("frameBarTop")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.frameBarTop)
-        self.horizontalLayout_2.setContentsMargins(20, 0, 20, 0)
-        self.horizontalLayout_2.setSpacing(12)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.labelPageName = QtWidgets.QLabel(self.frameBarTop)
-        self.labelPageName.setObjectName("labelPageName")
-        self.horizontalLayout_2.addWidget(self.labelPageName)
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem2)
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.horizontalLayout_2.addLayout(self.horizontalLayout_3)
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem3)
-        self.pushButton = QtWidgets.QPushButton(self.frameBarTop)
+        self.line_2 = QtWidgets.QFrame(self.frameBarLeft)
+        self.line_2.setMaximumSize(QtCore.QSize(16777215, 1))
+        self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_2.setObjectName("line_2")
+        self.verticalLayout_2.addWidget(self.line_2)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 5, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_2.addItem(spacerItem2)
+        self.leftMenuButtonGroups = QtWidgets.QPushButton(self.frameBarLeft)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/icons/icon_groups.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.leftMenuButtonGroups.setIcon(icon1)
+        self.leftMenuButtonGroups.setObjectName("leftMenuButtonGroups")
+        self.verticalLayout_2.addWidget(self.leftMenuButtonGroups)
+        self.leftMenuButtonStudents = QtWidgets.QPushButton(self.frameBarLeft)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/icons/icon_book.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.leftMenuButtonStudents.setIcon(icon2)
+        self.leftMenuButtonStudents.setObjectName("leftMenuButtonStudents")
+        self.verticalLayout_2.addWidget(self.leftMenuButtonStudents)
+        self.leftMenuButtonLeaders = QtWidgets.QPushButton(self.frameBarLeft)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/icons/icon_manager.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.leftMenuButtonLeaders.setIcon(icon3)
+        self.leftMenuButtonLeaders.setObjectName("leftMenuButtonLeaders")
+        self.verticalLayout_2.addWidget(self.leftMenuButtonLeaders)
+        self.leftMenuButtonOrganizations = QtWidgets.QPushButton(self.frameBarLeft)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/icons/icon_organization.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.leftMenuButtonOrganizations.setIcon(icon4)
+        self.leftMenuButtonOrganizations.setObjectName("leftMenuButtonOrganizations")
+        self.verticalLayout_2.addWidget(self.leftMenuButtonOrganizations)
+        self.leftMenuButtonPractices = QtWidgets.QPushButton(self.frameBarLeft)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(":/icons/icon_list.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.leftMenuButtonPractices.setIcon(icon5)
+        self.leftMenuButtonPractices.setObjectName("leftMenuButtonPractices")
+        self.verticalLayout_2.addWidget(self.leftMenuButtonPractices)
+        self.leftMenuButtonStatistics = QtWidgets.QPushButton(self.frameBarLeft)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.leftMenuButtonStatistics.sizePolicy().hasHeightForWidth())
+        self.leftMenuButtonStatistics.setSizePolicy(sizePolicy)
+        self.leftMenuButtonStatistics.setMinimumSize(QtCore.QSize(0, 0))
+        self.leftMenuButtonStatistics.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap(":/icons/icon_stat.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.leftMenuButtonStatistics.setIcon(icon6)
+        self.leftMenuButtonStatistics.setIconSize(QtCore.QSize(16, 16))
+        self.leftMenuButtonStatistics.setObjectName("leftMenuButtonStatistics")
+        self.verticalLayout_2.addWidget(self.leftMenuButtonStatistics)
+        self.leftMenuButtonSettings = QtWidgets.QPushButton(self.frameBarLeft)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.leftMenuButtonSettings.sizePolicy().hasHeightForWidth())
+        self.leftMenuButtonSettings.setSizePolicy(sizePolicy)
+        self.leftMenuButtonSettings.setMinimumSize(QtCore.QSize(0, 0))
+        self.leftMenuButtonSettings.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        icon7 = QtGui.QIcon()
+        icon7.addPixmap(QtGui.QPixmap(":/icons/icon_settings.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.leftMenuButtonSettings.setIcon(icon7)
+        self.leftMenuButtonSettings.setIconSize(QtCore.QSize(16, 16))
+        self.leftMenuButtonSettings.setObjectName("leftMenuButtonSettings")
+        self.verticalLayout_2.addWidget(self.leftMenuButtonSettings)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 5, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_2.addItem(spacerItem3)
+        self.line = QtWidgets.QFrame(self.frameBarLeft)
+        self.line.setMaximumSize(QtCore.QSize(16777215, 1))
+        self.line.setLineWidth(0)
+        self.line.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line.setObjectName("line")
+        self.verticalLayout_2.addWidget(self.line)
+        spacerItem4 = QtWidgets.QSpacerItem(20, 5, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_2.addItem(spacerItem4)
+        self.leftMenuButtonInfo = QtWidgets.QPushButton(self.frameBarLeft)
+        self.leftMenuButtonInfo.setMinimumSize(QtCore.QSize(0, 0))
+        self.leftMenuButtonInfo.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        icon8 = QtGui.QIcon()
+        icon8.addPixmap(QtGui.QPixmap(":/icons/icon_info.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.leftMenuButtonInfo.setIcon(icon8)
+        self.leftMenuButtonInfo.setObjectName("leftMenuButtonInfo")
+        self.verticalLayout_2.addWidget(self.leftMenuButtonInfo)
+        self.pushButton = QtWidgets.QPushButton(self.frameBarLeft)
+        icon9 = QtGui.QIcon()
+        icon9.addPixmap(QtGui.QPixmap(":/icons/icon_exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton.setIcon(icon9)
+        self.pushButton.setObjectName("pushButton")
+        self.verticalLayout_2.addWidget(self.pushButton)
+        spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_2.addItem(spacerItem5)
+        self.leftMenuButtonNotifications = QtWidgets.QPushButton(self.frameBarLeft)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
-        self.pushButton.setSizePolicy(sizePolicy)
-        self.pushButton.setMinimumSize(QtCore.QSize(32, 32))
-        self.pushButton.setMaximumSize(QtCore.QSize(32, 32))
+        sizePolicy.setHeightForWidth(self.leftMenuButtonNotifications.sizePolicy().hasHeightForWidth())
+        self.leftMenuButtonNotifications.setSizePolicy(sizePolicy)
+        self.leftMenuButtonNotifications.setMinimumSize(QtCore.QSize(55, 55))
+        self.leftMenuButtonNotifications.setMaximumSize(QtCore.QSize(55, 55))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        self.pushButton.setFont(font)
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout_2.addWidget(self.pushButton)
-        self.label_2 = QtWidgets.QLabel(self.frameBarTop)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        self.leftMenuButtonNotifications.setFont(font)
+        self.leftMenuButtonNotifications.setText("")
+        icon10 = QtGui.QIcon()
+        icon10.addPixmap(QtGui.QPixmap(":/icons/icon_bell.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.leftMenuButtonNotifications.setIcon(icon10)
+        self.leftMenuButtonNotifications.setObjectName("leftMenuButtonNotifications")
+        self.verticalLayout_2.addWidget(self.leftMenuButtonNotifications)
+        self.horizontalLayout_4.addWidget(self.frameBarLeft)
+        self.stackedWidgetMain = QtWidgets.QStackedWidget(self.frameMain)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
-        self.label_2.setSizePolicy(sizePolicy)
-        self.label_2.setMinimumSize(QtCore.QSize(32, 32))
-        self.label_2.setMaximumSize(QtCore.QSize(32, 32))
-        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_2.setObjectName("label_2")
-        self.horizontalLayout_2.addWidget(self.label_2)
-        self.verticalLayout.addWidget(self.frameBarTop)
-        self.stackedWidget = QtWidgets.QStackedWidget(self.frameBar)
-        self.stackedWidget.setObjectName("stackedWidget")
+        sizePolicy.setHeightForWidth(self.stackedWidgetMain.sizePolicy().hasHeightForWidth())
+        self.stackedWidgetMain.setSizePolicy(sizePolicy)
+        self.stackedWidgetMain.setMinimumSize(QtCore.QSize(0, 0))
+        self.stackedWidgetMain.setMaximumSize(QtCore.QSize(1000, 16777215))
+        self.stackedWidgetMain.setObjectName("stackedWidgetMain")
         self.page_1 = QtWidgets.QWidget()
         self.page_1.setObjectName("page_1")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.page_1)
@@ -190,7 +455,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 722, 486))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 158, 103))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_5.setContentsMargins(20, 20, 20, 20)
@@ -198,17 +463,30 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.framePage1_first = QtWidgets.QFrame(self.scrollAreaWidgetContents)
         self.framePage1_first.setObjectName("framePage1_first")
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.framePage1_first)
-        self.horizontalLayout_4.setContentsMargins(20, 20, 20, 0)
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.framePage1_first)
+        self.horizontalLayout_5.setContentsMargins(20, 20, 20, 0)
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.pushButton_6 = QtWidgets.QPushButton(self.framePage1_first)
         self.pushButton_6.setMinimumSize(QtCore.QSize(32, 32))
         self.pushButton_6.setMaximumSize(QtCore.QSize(32, 32))
         self.pushButton_6.setText("")
+        icon11 = QtGui.QIcon()
+        icon11.addPixmap(QtGui.QPixmap(":/icons/filter.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_6.setIcon(icon11)
         self.pushButton_6.setObjectName("pushButton_6")
-        self.horizontalLayout_4.addWidget(self.pushButton_6)
-        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem4)
+        self.horizontalLayout_5.addWidget(self.pushButton_6)
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem6)
+        self.pushButtonAdd = QtWidgets.QPushButton(self.framePage1_first)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pushButtonAdd.sizePolicy().hasHeightForWidth())
+        self.pushButtonAdd.setSizePolicy(sizePolicy)
+        self.pushButtonAdd.setMinimumSize(QtCore.QSize(32, 32))
+        self.pushButtonAdd.setMaximumSize(QtCore.QSize(32, 32))
+        self.pushButtonAdd.setObjectName("pushButtonAdd")
+        self.horizontalLayout_5.addWidget(self.pushButtonAdd)
         self.verticalLayout_5.addWidget(self.framePage1_first)
         self.framePage1_second = QtWidgets.QFrame(self.scrollAreaWidgetContents)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
@@ -216,24 +494,307 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.framePage1_second.sizePolicy().hasHeightForWidth())
         self.framePage1_second.setSizePolicy(sizePolicy)
-        self.framePage1_second.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.framePage1_second.setFrameShadow(QtWidgets.QFrame.Raised)
         self.framePage1_second.setObjectName("framePage1_second")
         self.verticalLayout_5.addWidget(self.framePage1_second)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.verticalLayout_4.addWidget(self.scrollArea)
-        self.stackedWidget.addWidget(self.page_1)
-        self.verticalLayout.addWidget(self.stackedWidget)
-        self.horizontalLayout.addWidget(self.frameBar)
+        self.stackedWidgetMain.addWidget(self.page_1)
+        self.pageListOwerview = QtWidgets.QWidget()
+        self.pageListOwerview.setObjectName("pageListOwerview")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.pageListOwerview)
+        self.horizontalLayout.setContentsMargins(20, 20, 20, 20)
+        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_3.setSpacing(0)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_10.setSpacing(0)
+        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+        self.ListOwerviewLineEditSearch = QtWidgets.QLineEdit(self.pageListOwerview)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.ListOwerviewLineEditSearch.sizePolicy().hasHeightForWidth())
+        self.ListOwerviewLineEditSearch.setSizePolicy(sizePolicy)
+        self.ListOwerviewLineEditSearch.setMinimumSize(QtCore.QSize(230, 32))
+        self.ListOwerviewLineEditSearch.setObjectName("ListOwerviewLineEditSearch")
+        self.horizontalLayout_10.addWidget(self.ListOwerviewLineEditSearch)
+        self.ListOwerviewButtonSearchFilter = QtWidgets.QPushButton(self.pageListOwerview)
+        self.ListOwerviewButtonSearchFilter.setMinimumSize(QtCore.QSize(0, 0))
+        self.ListOwerviewButtonSearchFilter.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.ListOwerviewButtonSearchFilter.setText("")
+        self.ListOwerviewButtonSearchFilter.setIcon(icon11)
+        self.ListOwerviewButtonSearchFilter.setObjectName("ListOwerviewButtonSearchFilter")
+        self.horizontalLayout_10.addWidget(self.ListOwerviewButtonSearchFilter)
+        self.verticalLayout_3.addLayout(self.horizontalLayout_10)
+        self.ListOwerviewScrollAreaMain = QtWidgets.QScrollArea(self.pageListOwerview)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.ListOwerviewScrollAreaMain.sizePolicy().hasHeightForWidth())
+        self.ListOwerviewScrollAreaMain.setSizePolicy(sizePolicy)
+        self.ListOwerviewScrollAreaMain.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.ListOwerviewScrollAreaMain.setLineWidth(0)
+        self.ListOwerviewScrollAreaMain.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.ListOwerviewScrollAreaMain.setWidgetResizable(True)
+        self.ListOwerviewScrollAreaMain.setObjectName("ListOwerviewScrollAreaMain")
+        self.ListOwerviewScrollAreaWidgetMain = QtWidgets.QWidget()
+        self.ListOwerviewScrollAreaWidgetMain.setGeometry(QtCore.QRect(0, 0, 261, 486))
+        self.ListOwerviewScrollAreaWidgetMain.setObjectName("ListOwerviewScrollAreaWidgetMain")
+        self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.ListOwerviewScrollAreaWidgetMain)
+        self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_8.setSpacing(0)
+        self.verticalLayout_8.setObjectName("verticalLayout_8")
+        self.ListOwerviewScrollAreaMain.setWidget(self.ListOwerviewScrollAreaWidgetMain)
+        self.verticalLayout_3.addWidget(self.ListOwerviewScrollAreaMain)
+        self.ListOwerviewButtonCreate = QtWidgets.QPushButton(self.pageListOwerview)
+        self.ListOwerviewButtonCreate.setObjectName("ListOwerviewButtonCreate")
+        self.verticalLayout_3.addWidget(self.ListOwerviewButtonCreate)
+        self.horizontalLayout.addLayout(self.verticalLayout_3)
+        self.ListOwerviewStackedWidget = QtWidgets.QStackedWidget(self.pageListOwerview)
+        self.ListOwerviewStackedWidget.setObjectName("ListOwerviewStackedWidget")
+        self.pageProfile = QtWidgets.QWidget()
+        self.pageProfile.setObjectName("pageProfile")
+        self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.pageProfile)
+        self.verticalLayout_9.setContentsMargins(20, 20, 20, 20)
+        self.verticalLayout_9.setSpacing(10)
+        self.verticalLayout_9.setObjectName("verticalLayout_9")
+        self.gridLayout = QtWidgets.QGridLayout()
+        self.gridLayout.setSpacing(10)
+        self.gridLayout.setObjectName("gridLayout")
+        self.label_2 = QtWidgets.QLabel(self.pageProfile)
+        self.label_2.setObjectName("label_2")
+        self.gridLayout.addWidget(self.label_2, 2, 0, 1, 1)
+        self.label_5 = QtWidgets.QLabel(self.pageProfile)
+        self.label_5.setObjectName("label_5")
+        self.gridLayout.addWidget(self.label_5, 4, 0, 1, 1)
+        self.label_4 = QtWidgets.QLabel(self.pageProfile)
+        self.label_4.setObjectName("label_4")
+        self.gridLayout.addWidget(self.label_4, 3, 0, 1, 1)
+        self.textEdit_2 = QtWidgets.QTextEdit(self.pageProfile)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.textEdit_2.sizePolicy().hasHeightForWidth())
+        self.textEdit_2.setSizePolicy(sizePolicy)
+        self.textEdit_2.setMinimumSize(QtCore.QSize(0, 32))
+        self.textEdit_2.setObjectName("textEdit_2")
+        self.gridLayout.addWidget(self.textEdit_2, 1, 2, 1, 1)
+        self.label_6 = QtWidgets.QLabel(self.pageProfile)
+        self.label_6.setObjectName("label_6")
+        self.gridLayout.addWidget(self.label_6, 5, 0, 1, 1)
+        self.textEdit = QtWidgets.QTextEdit(self.pageProfile)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.textEdit.sizePolicy().hasHeightForWidth())
+        self.textEdit.setSizePolicy(sizePolicy)
+        self.textEdit.setMinimumSize(QtCore.QSize(0, 32))
+        self.textEdit.setObjectName("textEdit")
+        self.gridLayout.addWidget(self.textEdit, 2, 2, 1, 1)
+        self.textEdit_4 = QtWidgets.QTextEdit(self.pageProfile)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.textEdit_4.sizePolicy().hasHeightForWidth())
+        self.textEdit_4.setSizePolicy(sizePolicy)
+        self.textEdit_4.setMinimumSize(QtCore.QSize(0, 32))
+        self.textEdit_4.setObjectName("textEdit_4")
+        self.gridLayout.addWidget(self.textEdit_4, 3, 2, 1, 1)
+        self.labelOrganizationIcon = QtWidgets.QLabel(self.pageProfile)
+        self.labelOrganizationIcon.setMinimumSize(QtCore.QSize(50, 50))
+        self.labelOrganizationIcon.setMaximumSize(QtCore.QSize(50, 50))
+        self.labelOrganizationIcon.setAlignment(QtCore.Qt.AlignCenter)
+        self.labelOrganizationIcon.setObjectName("labelOrganizationIcon")
+        self.gridLayout.addWidget(self.labelOrganizationIcon, 0, 0, 1, 1)
+        self.textEdit_3 = QtWidgets.QTextEdit(self.pageProfile)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.textEdit_3.sizePolicy().hasHeightForWidth())
+        self.textEdit_3.setSizePolicy(sizePolicy)
+        self.textEdit_3.setMinimumSize(QtCore.QSize(0, 32))
+        self.textEdit_3.setObjectName("textEdit_3")
+        self.gridLayout.addWidget(self.textEdit_3, 0, 2, 1, 1)
+        self.label_3 = QtWidgets.QLabel(self.pageProfile)
+        self.label_3.setObjectName("label_3")
+        self.gridLayout.addWidget(self.label_3, 1, 0, 1, 1)
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_7.setSpacing(10)
+        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        self.ListOwerviewButtonDelete = QtWidgets.QPushButton(self.pageProfile)
+        self.ListOwerviewButtonDelete.setObjectName("ListOwerviewButtonDelete")
+        self.horizontalLayout_7.addWidget(self.ListOwerviewButtonDelete)
+        self.ListOwerviewButtonEdit = QtWidgets.QPushButton(self.pageProfile)
+        self.ListOwerviewButtonEdit.setObjectName("ListOwerviewButtonEdit")
+        self.horizontalLayout_7.addWidget(self.ListOwerviewButtonEdit)
+        self.gridLayout.addLayout(self.horizontalLayout_7, 6, 2, 1, 1)
+        self.lineEdit = QtWidgets.QLineEdit(self.pageProfile)
+        self.lineEdit.setMinimumSize(QtCore.QSize(0, 32))
+        self.lineEdit.setObjectName("lineEdit")
+        self.gridLayout.addWidget(self.lineEdit, 5, 2, 1, 1)
+        self.lineEdit_2 = QtWidgets.QLineEdit(self.pageProfile)
+        self.lineEdit_2.setMinimumSize(QtCore.QSize(0, 32))
+        self.lineEdit_2.setObjectName("lineEdit_2")
+        self.gridLayout.addWidget(self.lineEdit_2, 4, 2, 1, 1)
+        self.verticalLayout_9.addLayout(self.gridLayout)
+        self.ListOwerviewLabelComments = QtWidgets.QLabel(self.pageProfile)
+        self.ListOwerviewLabelComments.setMinimumSize(QtCore.QSize(0, 0))
+        self.ListOwerviewLabelComments.setObjectName("ListOwerviewLabelComments")
+        self.verticalLayout_9.addWidget(self.ListOwerviewLabelComments)
+        self.ListOwerviewListViewComments = QtWidgets.QListView(self.pageProfile)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.ListOwerviewListViewComments.sizePolicy().hasHeightForWidth())
+        self.ListOwerviewListViewComments.setSizePolicy(sizePolicy)
+        self.ListOwerviewListViewComments.setMinimumSize(QtCore.QSize(0, 0))
+        self.ListOwerviewListViewComments.setObjectName("ListOwerviewListViewComments")
+        self.verticalLayout_9.addWidget(self.ListOwerviewListViewComments)
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_8.setSpacing(0)
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        self.ListOwerviewLineEditComments = QtWidgets.QLineEdit(self.pageProfile)
+        self.ListOwerviewLineEditComments.setObjectName("ListOwerviewLineEditComments")
+        self.horizontalLayout_8.addWidget(self.ListOwerviewLineEditComments)
+        self.ListOwerviewButtonSend = QtWidgets.QPushButton(self.pageProfile)
+        self.ListOwerviewButtonSend.setObjectName("ListOwerviewButtonSend")
+        self.horizontalLayout_8.addWidget(self.ListOwerviewButtonSend)
+        self.verticalLayout_9.addLayout(self.horizontalLayout_8)
+        self.ListOwerviewStackedWidget.addWidget(self.pageProfile)
+        self.pageClear = QtWidgets.QWidget()
+        self.pageClear.setObjectName("pageClear")
+        self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.pageClear)
+        self.verticalLayout_7.setContentsMargins(15, 15, 15, 15)
+        self.verticalLayout_7.setSpacing(10)
+        self.verticalLayout_7.setObjectName("verticalLayout_7")
+        self.ListOwerviewLabelClear = QtWidgets.QLabel(self.pageClear)
+        self.ListOwerviewLabelClear.setAlignment(QtCore.Qt.AlignCenter)
+        self.ListOwerviewLabelClear.setObjectName("ListOwerviewLabelClear")
+        self.verticalLayout_7.addWidget(self.ListOwerviewLabelClear)
+        self.ListOwerviewStackedWidget.addWidget(self.pageClear)
+        self.horizontalLayout.addWidget(self.ListOwerviewStackedWidget)
+        self.stackedWidgetMain.addWidget(self.pageListOwerview)
+        self.pageSettings = QtWidgets.QWidget()
+        self.pageSettings.setObjectName("pageSettings")
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.pageSettings)
+        self.verticalLayout_10.setContentsMargins(20, 20, 20, 20)
+        self.verticalLayout_10.setSpacing(10)
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.verticalLayout_12 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_12.setSpacing(0)
+        self.verticalLayout_12.setObjectName("verticalLayout_12")
+        self.labelSettings_2 = QtWidgets.QLabel(self.pageSettings)
+        self.labelSettings_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.labelSettings_2.setObjectName("labelSettings_2")
+        self.verticalLayout_12.addWidget(self.labelSettings_2)
+        self.frameSettings_2 = QtWidgets.QFrame(self.pageSettings)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frameSettings_2.sizePolicy().hasHeightForWidth())
+        self.frameSettings_2.setSizePolicy(sizePolicy)
+        self.frameSettings_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frameSettings_2.setObjectName("frameSettings_2")
+        self.horizontalLayout_11 = QtWidgets.QHBoxLayout(self.frameSettings_2)
+        self.horizontalLayout_11.setContentsMargins(20, 20, 20, 20)
+        self.horizontalLayout_11.setSpacing(0)
+        self.horizontalLayout_11.setObjectName("horizontalLayout_11")
+        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem7)
+        self.gridLayout_3 = QtWidgets.QGridLayout()
+        self.gridLayout_3.setSpacing(10)
+        self.gridLayout_3.setObjectName("gridLayout_3")
+        self.label_11 = QtWidgets.QLabel(self.frameSettings_2)
+        self.label_11.setObjectName("label_11")
+        self.gridLayout_3.addWidget(self.label_11, 0, 0, 1, 1)
+        self.label_12 = QtWidgets.QLabel(self.frameSettings_2)
+        self.label_12.setObjectName("label_12")
+        self.gridLayout_3.addWidget(self.label_12, 1, 0, 1, 1)
+        self.lineEdit_6 = QtWidgets.QLineEdit(self.frameSettings_2)
+        self.lineEdit_6.setMinimumSize(QtCore.QSize(200, 32))
+        self.lineEdit_6.setObjectName("lineEdit_6")
+        self.gridLayout_3.addWidget(self.lineEdit_6, 0, 1, 1, 1)
+        self.lineEdit_7 = QtWidgets.QLineEdit(self.frameSettings_2)
+        self.lineEdit_7.setMinimumSize(QtCore.QSize(200, 32))
+        self.lineEdit_7.setObjectName("lineEdit_7")
+        self.gridLayout_3.addWidget(self.lineEdit_7, 1, 1, 1, 1)
+        self.lineEdit_8 = QtWidgets.QLineEdit(self.frameSettings_2)
+        self.lineEdit_8.setMinimumSize(QtCore.QSize(200, 32))
+        self.lineEdit_8.setObjectName("lineEdit_8")
+        self.gridLayout_3.addWidget(self.lineEdit_8, 2, 1, 1, 1)
+        self.pushButtonSettingsEditPassword = QtWidgets.QPushButton(self.frameSettings_2)
+        self.pushButtonSettingsEditPassword.setObjectName("pushButtonSettingsEditPassword")
+        self.gridLayout_3.addWidget(self.pushButtonSettingsEditPassword, 3, 1, 1, 1)
+        self.label_13 = QtWidgets.QLabel(self.frameSettings_2)
+        self.label_13.setObjectName("label_13")
+        self.gridLayout_3.addWidget(self.label_13, 2, 0, 1, 1)
+        self.horizontalLayout_11.addLayout(self.gridLayout_3)
+        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem8)
+        self.verticalLayout_12.addWidget(self.frameSettings_2)
+        self.verticalLayout_10.addLayout(self.verticalLayout_12)
+        spacerItem9 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_10.addItem(spacerItem9)
+        self.stackedWidgetMain.addWidget(self.pageSettings)
+        self.horizontalLayout_4.addWidget(self.stackedWidgetMain)
+        self.horizontalLayout_2.addWidget(self.frameMain)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidgetMain.setCurrentIndex(1)
+        self.ListOwerviewStackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        MainWindow.setTabOrder(self.leftMenuButtonProfile, self.leftMenuButtonGroups)
+        MainWindow.setTabOrder(self.leftMenuButtonGroups, self.leftMenuButtonStudents)
+        MainWindow.setTabOrder(self.leftMenuButtonStudents, self.leftMenuButtonLeaders)
+        MainWindow.setTabOrder(self.leftMenuButtonLeaders, self.leftMenuButtonOrganizations)
+        MainWindow.setTabOrder(self.leftMenuButtonOrganizations, self.leftMenuButtonPractices)
+        MainWindow.setTabOrder(self.leftMenuButtonPractices, self.leftMenuButtonStatistics)
+        MainWindow.setTabOrder(self.leftMenuButtonStatistics, self.leftMenuButtonSettings)
+        MainWindow.setTabOrder(self.leftMenuButtonSettings, self.leftMenuButtonInfo)
+        MainWindow.setTabOrder(self.leftMenuButtonInfo, self.leftMenuButtonNotifications)
+        MainWindow.setTabOrder(self.leftMenuButtonNotifications, self.scrollArea)
+        MainWindow.setTabOrder(self.scrollArea, self.pushButtonAdd)
+        MainWindow.setTabOrder(self.pushButtonAdd, self.lineEdit_6)
+        MainWindow.setTabOrder(self.lineEdit_6, self.lineEdit_7)
+        MainWindow.setTabOrder(self.lineEdit_7, self.lineEdit_8)
+        MainWindow.setTabOrder(self.lineEdit_8, self.pushButtonSettingsEditPassword)
+        MainWindow.setTabOrder(self.pushButtonSettingsEditPassword, self.pushButton_6)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.labelPageName.setText(_translate("MainWindow", "Организации"))
-        self.pushButton.setText(_translate("MainWindow", "Notif"))
-        self.label_2.setText(_translate("MainWindow", "Icon"))
+        self.labelProgrammName.setText(_translate("MainWindow", "ПРАКТИКА"))
+        self.leftMenuButtonProfile.setText(_translate("MainWindow", "Профиль"))
+        self.leftMenuButtonGroups.setText(_translate("MainWindow", "Группы"))
+        self.leftMenuButtonStudents.setText(_translate("MainWindow", "Студенты"))
+        self.leftMenuButtonLeaders.setText(_translate("MainWindow", "Руководители"))
+        self.leftMenuButtonOrganizations.setText(_translate("MainWindow", "Организации"))
+        self.leftMenuButtonPractices.setText(_translate("MainWindow", "Практики"))
+        self.leftMenuButtonStatistics.setText(_translate("MainWindow", "Статистика"))
+        self.leftMenuButtonSettings.setText(_translate("MainWindow", "Настройки"))
+        self.leftMenuButtonInfo.setText(_translate("MainWindow", "О программе"))
+        self.pushButton.setText(_translate("MainWindow", "Выход"))
+        self.pushButtonAdd.setText(_translate("MainWindow", "+"))
+        self.ListOwerviewLineEditSearch.setPlaceholderText(_translate("MainWindow", "Введите название организации..."))
+        self.ListOwerviewButtonCreate.setText(_translate("MainWindow", "Создать"))
+        self.label_2.setText(_translate("MainWindow", "Телефон:"))
+        self.label_5.setText(_translate("MainWindow", "ИНН:"))
+        self.label_4.setText(_translate("MainWindow", "Почта:"))
+        self.label_6.setText(_translate("MainWindow", "КПП:"))
+        self.labelOrganizationIcon.setText(_translate("MainWindow", "icon"))
+        self.label_3.setText(_translate("MainWindow", "Адрес:"))
+        self.ListOwerviewButtonDelete.setText(_translate("MainWindow", "Удалить"))
+        self.ListOwerviewButtonEdit.setText(_translate("MainWindow", "Редактировать"))
+        self.ListOwerviewLabelComments.setText(_translate("MainWindow", "Комментарии:"))
+        self.ListOwerviewButtonSend.setText(_translate("MainWindow", "Отправить"))
+        self.ListOwerviewLabelClear.setText(_translate("MainWindow", "Выбирите элемент\n"
+"или создайте новый"))
+        self.labelSettings_2.setText(_translate("MainWindow", "Смена пароля"))
+        self.label_11.setText(_translate("MainWindow", "Старый пароль:"))
+        self.label_12.setText(_translate("MainWindow", "Новый пароль:"))
+        self.pushButtonSettingsEditPassword.setText(_translate("MainWindow", "Изменить"))
+        self.label_13.setText(_translate("MainWindow", "Повтор:"))
